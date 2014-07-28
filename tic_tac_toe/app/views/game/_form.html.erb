@@ -1,0 +1,8 @@
+<h2>Choose a move</h2>
+
+<%= form_for(@move) do |f| %>
+
+<%= f.label :move %>
+<%= f.collection_select :move, Move.all, :id, :square_id %>
+
+<% end %>
