@@ -3,6 +3,7 @@ TicTacToe::Application.routes.draw do
 
   resources :game
 
+  get 'about' => 'about#about'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

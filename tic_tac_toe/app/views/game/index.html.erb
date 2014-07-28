@@ -2,5 +2,15 @@
 
 <p>
   <b>Moves</b>
-  <%= @move.square_id %>
+  <% @move.each do |move| %>
+   <%= move.square_id %>
+  <% end %>
 </p>
+
+<%= form_for(@new_move, url: game_index_path, method: 'get') do |f| %>
+  <%= f.label :square_id %>
+  <%= f.collection_select :square_id, Move.all, :id, :square_id %>
+  <%= f.submit %>
+<% end %>
+
+<%#= render 'form', :locals {@move: @move} %>
