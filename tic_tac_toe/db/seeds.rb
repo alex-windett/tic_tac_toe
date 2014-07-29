@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Move.delete_all
+
+Move.create(square_id: 'a1')
+Move.create(square_id: 'a2')
+Move.create(square_id: 'a3')
+
+Move.create(square_id: 'b1')
+Move.create(square_id: 'b2')
+Move.create(square_id: 'b3')
+
+Move.create(square_id: 'c1')
+Move.create(square_id: 'c2')
+Move.create(square_id: 'c3')

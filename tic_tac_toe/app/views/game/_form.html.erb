@@ -1,7 +1,1 @@
 <h2>Choose a move</h2>
-
-<%= form_for @move do |f| %>
-  <%= f.label :square_id %>
-  <%= f.collection_select :square_id, Move.all, :square_id%>
-  <%= f.submit %>
-<% end %>

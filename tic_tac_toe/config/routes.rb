@@ -1,9 +1,13 @@
 TicTacToe::Application.routes.draw do
+  get 'login', to: "sessions#new"
+
+  resources :sessions, only: [:new, :create, :destroy]
+
   resources :users
 
   resources :game
 
-  get 'about' => 'about#about'
+  get 'about', to: 'about#about'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
