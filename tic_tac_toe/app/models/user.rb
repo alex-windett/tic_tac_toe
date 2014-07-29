@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :password_digest, presence: true
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, uniqueness: true
-  validates :role, presence: true
+  validates :role, presence: true, :default => 'user'
 
   mount_uploader :picture, PictureUploader
 end
