@@ -1,13 +1,6 @@
 <h1>Listing Moves</h1>
 
 <p>
-  <b>Current Games</b>
-  <% @game.each do |game|%>
-  <%= link_to game.id, game %>
-  <% end %>
-</p>
-
-<p>
   <b>Moves</b>
   <% @move.each do |move| %>
    <%= move.square_id %>
@@ -21,6 +14,6 @@
 <% #end %>
 
 <% (1..9).each do |x| %>
-  <%= link_to x, game_index_path(player_move: x) %>
+  <%= link_to x, game_path(@game, player_move: x) %>
   <%=  %>
 <% end %> 
