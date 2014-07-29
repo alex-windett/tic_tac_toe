@@ -1,19 +1,36 @@
 <h1>Listing Moves</h1>
+<br>
+
+<%= render 'table' %>
 
 <p>
-  <b>Moves</b>
+<b>Comp move</b>
+<% unwanted_square = @move %>
+  <% comp_move = [*1..9].sample %>
+</p>
+<!--  computro move changes every time -->
+
+<p>
+  <b>Past Moves</b>
   <% @move.each do |move| %>
    <%= move.square_id %>
+   <%= comp_move %>
+  <% end %>
+
+  <br>
+<b>Symbol</b>
+  <% @move.each do |move| %>
+    <% square = move.square_id %>
+      <% if ["1", "2", "3", "4"].include? square %>
+        X
+      <% else %>
+        0
+      <% end %>  
   <% end %>
 </p>
 
-<%#= form_for(@new_move, url: game_index_path, method: 'get') do |f| %>
-  <%#= f.label :square_id %>
-  <%#= f.collection_select :square_id, Move.all, :id, :square_id %>
-  <%#= f.submit %>
-<% #end %>
-
-<% (1..9).each do |x| %>
-  <%= link_to x, game_path(@game, player_move: x) %>
-  <%=  %>
-<% end %> 
+<br>
+<p><%= link_to 'New Game', new_game_path %></p>
+<br>
+<p><%= link_to 'Delete Game', @game, method: :delete  %></p>
+<br>

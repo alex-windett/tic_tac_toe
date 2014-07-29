@@ -1,26 +1,11 @@
 <h1>Listing Moves</h1>
 
 <p>
-  <b>Current Games</b>
+  <b>Previous Games</b>
   <% @game.each do |game|%>
   <%= link_to game.id, game %>
   <% end %>
 </p>
 
-<p>
-  <b>Moves</b>
-  <% @move.each do |move| %>
-   <%= move.square_id %>
-  <% end %>
-</p>
-
-<%#= form_for(@new_move, url: game_index_path, method: 'get') do |f| %>
-  <%#= f.label :square_id %>
-  <%#= f.collection_select :square_id, Move.all, :id, :square_id %>
-  <%#= f.submit %>
-<% #end %>
-
-<% (1..9).each do |x| %>
-  <%= link_to x, game_index_path(player_move: x) %>
-  <%=  %>
-<% end %> 
+<br>
+<%= link_to 'New Game', new_game_path %>

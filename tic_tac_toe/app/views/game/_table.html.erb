@@ -1,0 +1,32 @@
+<% (1..9).each do |x| %>
+ <TR>
+    <TD><%= link_to x, game_path(@game, player_move: x) %></TD>
+    <TD> </TD>
+    <TD> </TD>
+  </TR>
+  <TR>
+    <TD> </TD>
+    <TD> </TD>
+    <TD> </TD>
+  </TR>
+  <TR>
+    <TD> </TD>
+    <TD> </TD>
+    <TD> </TD>
+  </TR>
+</TABLE>
+<% end %>
+
+<table
+<div class = 'board'>
+<p>
+<b>Pick move</b>
+<% (1..9).each do |x| %>
+  <tr>
+    <td><%= link_to x, game_path(@game, player_move: x) %></td>
+    <td><%= link_to x, game_path(@game, player_move: x) %></td>
+    <td><%= link_to x, game_path(@game, player_move: x) %></td>
+  </tr>
+  <% end %> 
+</div>
+</table>
