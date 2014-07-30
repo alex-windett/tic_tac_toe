@@ -1,11 +1,20 @@
 <div class='big_box'>
 <% (1..9).each do |x| %>
 <div id = 'square'>
-  <% if @moves_array.include?(x) %>
-      X or O
+  <% if @user_moves_array.include?(x) %>
+      X
+  <% elsif @comp_moves_array.include?(x)%>
+      O
   <% else %>
     <%= link_to x, game_path(@game, player_move: x) %>
   <% end %>
 </div>
 <% end %>
 </div>
+<% if @user_moves_array == @winning_combination %>
+Palyer Wins
+<% else @comp_moves_array == @winning_combination 
+ %>
+Computer Wins
+
+<% end %>

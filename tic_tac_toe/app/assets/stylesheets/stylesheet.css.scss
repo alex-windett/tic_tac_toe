@@ -1,3 +1,9 @@
+body {
+font-family: 'Patrick Hand SC', cursive;
+background-color: green;
+color: white;
+}
+
 .big_box {
   width: 400px;
 }
@@ -8,8 +14,17 @@
   width: 100px;
   display: inline-block;
   text-align: center;
+  background-color: black;
+  border: white 1px solid;
+  color: white;
+  font-size: 60px;
 }
 
 li {
   display: inline-block;
+}
+
+a {
+  text_decoration: none;
+  color: white;
 }

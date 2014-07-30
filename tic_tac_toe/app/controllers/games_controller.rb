@@ -18,43 +18,48 @@ class GamesController < ApplicationController
     @games = Game.all
     @moves = @game.moves
     @user = User.all
-    @moves_array = []
+    @user_moves_array = []
+    @comp_moves_array = []
+    @move = Move.all
+    @winning_combination = [1, 2, 3]
+
+    @move.each do |move|
+      @user_move = move.player_id
+    end
 
     @user.each do |user|
       @user_name = user.name
     end
   
     if params[:player_move]
-      @game.moves.create(square_id: params[:player_move], player_id: 2)
-        @moves_array = @game.moves.map {|move| move.square_id.to_i}
+      @moves.create(square_id: params[:player_move], player_id: 2)
+
+        @user_moves_array = @game.moves.map do |move| move.square_id.to_i
+        end
+
         availiable_moves = [*1..9]    
-        @moves_array.each do |move_id|
-          availiable_moves.delete(move_id)
-      end 
+
+            @user_moves_array.each do |move_id|
+              availiable_moves.delete(move_id)
+            end 
+            @comp_moves_array.each do |move_id|
+              availiable_moves.delete(move_id)
+            end   
+
         comp_move = availiable_moves.sample
       @game.moves.create(square_id: comp_move)
-      @moves_array = @game.moves.map {|move| move.square_id.to_i}
+
+      @comp_moves_array = @game.moves.map {|move| move.square_id.to_i}
     end
+
+   
+
+
   end
 
 def new 
  @game = Game.new
  @user = User.all
-
-# redirect_to @game
-
- # (params[:game])
-  
-
-  # respond_to do |format|
-  #     if @game.save
-  #       format.html { redirect_to @game, notice: 'Start Playing a new game.' }
-  #       format.json { render json: @game, status: :created, location: @game }
-  #     else
-  #       format.html { render action: "new" }
-  #       format.json { render json: @game.errors, status: :unprocessable_entity }
-  #     end
-  #   end
 end
 
 def create

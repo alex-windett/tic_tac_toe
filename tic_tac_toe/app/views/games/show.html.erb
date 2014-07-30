@@ -1,39 +1,20 @@
 <h1>Playing Game</h1>
 
 <%= render 'table' %>
-<p>
-<b>Comp move</b>
-  <% moves = [1..9] %>
-  <% comp_move = [*1..9].sample %>
-</p>
-<!--  computro move changes every time -->
 
-<p>
   <b>Past Moves</b>
   <% @moves.each do |move| %>
     <%= move.square_id %>
-
-    <% if move.player_id %>
-        X
-    <% else %>
-        O
-    <% end %>
-    <br>
-   
+      <% if move.player_id %>
+          X
+      <% else %>
+          O
+      <% end %>
+      <br>
   <% end %>
 
   <br>
 
-<% @games.each do |game| %>
-
-  <% if game.user_id %>
-  
-  <% elsif game.player2_id == 'Opponent' || 'Guest' %>
-    <p>Opponent: O</p>
-  <% else %>
-    <p>error</p>
-  <% end %>
-<% end %>
 
 
 
