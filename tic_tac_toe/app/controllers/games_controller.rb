@@ -1,4 +1,4 @@
-class GameController < ApplicationController
+class GamesController < ApplicationController
  
   def index
     @move = Move.all
@@ -44,7 +44,7 @@ end
 
 def create
   @game = Game.new(params[:game])
-  raise
+  
 
   respond_to do |format|
       if @game.save
@@ -63,7 +63,7 @@ def destroy
   @game.destroy
 
   respond_to do |format|
-      format.html { redirect_to game_index_url }
+      format.html { redirect_to games_path }
       format.json { head :no_content }
     end
 end

@@ -1,0 +1,17 @@
+<h1>Login</h1>
+  <%= form_tag sessions_path do %>
+    <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, params[:email] %>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+      <%= submit_tag "Log in" %>
+    </div>
+  <% end %>
+
+  <% if current_user %>
+   <p> hello, <%= current_user.email %> </p>
+   <%= link_to 'Logout', session_path(session), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% else %>
+   <%= link_to 'Please login', login_path %>
+<% end %>

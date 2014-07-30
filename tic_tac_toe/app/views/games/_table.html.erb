@@ -1,0 +1,7 @@
+<div class='big_box'>
+<% (1..9).each do |x| %>
+<div id = 'square'>
+  <%= link_to x, game_path(@game, player_move: x) %>
+</div>
+<% end %>
+</div>
