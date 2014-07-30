@@ -1,6 +1,6 @@
 <% (1..9).each do |x| %>
  <TR>
-    <TD><%= link_to x, game_path(@game, player_move: x) %></TD>
+    <TD><%= link_to x, game_path(@game, player_move: x)[0] %></TD>
     <TD> </TD>
     <TD> </TD>
   </TR>

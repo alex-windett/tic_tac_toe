@@ -1,0 +1,10 @@
+<h1>Choose Users</h1>
+<%= form_for(@game) do |f| %>
+  <%= f.label 'player 1' %>
+  <%= f.collection_select :name, User.all, :id, :name %>
+  <br>
+  <%= f.label 'player 2' %>
+  <%= f.select :name, options_for_select(['Guest', 'Computer'])  %>
+  <br>
+  <%= f.submit 'Play Game' %>
+<% end %>

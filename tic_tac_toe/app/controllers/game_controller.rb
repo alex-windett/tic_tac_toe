@@ -5,7 +5,7 @@ class GameController < ApplicationController
     @new_move = Move.new
     @game = Game.all
 
-    # @game = Game.create
+     # @game = Game.create
 
   #   if params[:themove]
   #     @game.moves.create(square_id:params[:themove])
@@ -23,18 +23,23 @@ class GameController < ApplicationController
   end
 
 def new 
- @game = Game.new(params[:game])
+ @game = Game.new
+ @user = User.all
+
+# redirect_to @game
+
+ # (params[:game])
   
 
-  respond_to do |format|
-      if @game.save
-        format.html { redirect_to @game, notice: 'Start Playing a new game.' }
-        format.json { render json: @game, status: :created, location: @game }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
-      end
-    end
+  # respond_to do |format|
+  #     if @game.save
+  #       format.html { redirect_to @game, notice: 'Start Playing a new game.' }
+  #       format.json { render json: @game, status: :created, location: @game }
+  #     else
+  #       format.html { render action: "new" }
+  #       format.json { render json: @game.errors, status: :unprocessable_entity }
+  #     end
+  #   end
 end
 
 def create
