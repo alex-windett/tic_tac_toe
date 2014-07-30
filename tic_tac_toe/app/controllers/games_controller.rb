@@ -18,42 +18,38 @@ class GamesController < ApplicationController
     @games = Game.all
     @moves = @game.moves
     @user = User.all
-    @user_moves_array = []
-    @comp_moves_array = []
+    @users_moves = []
+    @comps_moves = []
     @move = Move.all
-    @winning_combination = [1, 2, 3]
+    @winning_line = [1, 2, 3]
 
-    @move.each do |move|
-      @user_move = move.player_id
-    end
 
     @user.each do |user|
       @user_name = user.name
     end
   
     if params[:player_move]
-      @moves.create(square_id: params[:player_move], player_id: 2)
+      @moves.create(square_id: params[:player_move], player_id: 1)
 
-        @user_moves_array = @game.moves.map do |move| move.square_id.to_i
+        @users_moves = @game.moves.map do |move| move.square_id.to_i
         end
 
         availiable_moves = [*1..9]    
 
-            @user_moves_array.each do |move_id|
+            @users_moves.each do |move_id|
               availiable_moves.delete(move_id)
             end 
-            @comp_moves_array.each do |move_id|
+            @comps_moves.each do |move_id|
               availiable_moves.delete(move_id)
             end   
 
         comp_move = availiable_moves.sample
       @game.moves.create(square_id: comp_move)
 
-      @comp_moves_array = @game.moves.map {|move| move.square_id.to_i}
+      @comps_moves = @game.moves.map do |move| move.square_id.to_i
+      end
+
     end
-
-   
-
 
   end
 

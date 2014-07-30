@@ -1,9 +1,10 @@
 <div class='big_box'>
 <% (1..9).each do |x| %>
 <div id = 'square'>
-  <% if @user_moves_array.include?(x) %>
+  <% case %>
+  <% when @users_moves.include?(x) %>
       X
-  <% elsif @comp_moves_array.include?(x)%>
+  <% when @comps_moves.include?(x) %>
       O
   <% else %>
     <%= link_to x, game_path(@game, player_move: x) %>
@@ -11,10 +12,16 @@
 </div>
 <% end %>
 </div>
-<% if @user_moves_array == @winning_combination %>
-Palyer Wins
-<% else @comp_moves_array == @winning_combination 
- %>
-Computer Wins
 
+<% @winning_line.all? do |line| %>
+    <% case %>
+    <% when @users_moves.include?(line) %>
+      User wins
+    <% when @comps_moves.include?(line) %>
+      Comp wins
+    <% else %>
+      nothing
+  <% end %>
 <% end %>
+
+<!-- if one of the numbers matches any of those in users/comps moves it changes, not when all match -->
