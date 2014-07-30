@@ -15,10 +15,25 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @move = @game.moves
-    
+    @games = Game.all
+    @moves = @game.moves
+    @user = User.all
+    @moves_array = []
+
+    @user.each do |user|
+      @user_name = user.name
+    end
+  
     if params[:player_move]
-      @game.moves.create(square_id: params[:player_move])
+      @game.moves.create(square_id: params[:player_move], player_id: 2)
+        @moves_array = @game.moves.map {|move| move.square_id.to_i}
+        availiable_moves = [*1..9]    
+        @moves_array.each do |move_id|
+          availiable_moves.delete(move_id)
+      end 
+        comp_move = availiable_moves.sample
+      @game.moves.create(square_id: comp_move)
+      @moves_array = @game.moves.map {|move| move.square_id.to_i}
     end
   end
 
@@ -44,6 +59,7 @@ end
 
 def create
   @game = Game.new(params[:game])
+  @user = User.all
   
 
   respond_to do |format|

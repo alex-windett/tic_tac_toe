@@ -1,7 +1,6 @@
 <h1>Playing Game</h1>
 
 <%= render 'table' %>
-
 <p>
 <b>Comp move</b>
   <% moves = [1..9] %>
@@ -11,23 +10,32 @@
 
 <p>
   <b>Past Moves</b>
-  <% @move.each do |move| %>
-   <%= move.square_id %>
-   <%= comp_move %>
+  <% @moves.each do |move| %>
+    <%= move.square_id %>
+
+    <% if move.player_id %>
+        X
+    <% else %>
+        O
+    <% end %>
+    <br>
+   
   <% end %>
 
   <br>
 
-<b>Symbol</b>
-  <% @move.each do |move| %>
-    <% square = move.square_id %>
-      <% if ["1", "2", "3", "4"].include? square %>
-        X
-      <% else %>
-        0
-      <% end %>  
+<% @games.each do |game| %>
+
+  <% if game.user_id %>
+  
+  <% elsif game.player2_id == 'Opponent' || 'Guest' %>
+    <p>Opponent: O</p>
+  <% else %>
+    <p>error</p>
   <% end %>
-</p>
+<% end %>
+
+
 
 <p><%= link_to 'New Game', new_game_path %></p>
 
