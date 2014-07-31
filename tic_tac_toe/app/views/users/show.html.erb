@@ -12,7 +12,7 @@
 
 <p>
   <b>Picture:</b>
-  <%= image_tag @user.picture.url %>
+  <%#= image_tag @user.picture.url %>
 </p>
 
 <p>
@@ -30,11 +30,13 @@
   <% @games.each do |game|%>
     <%= if game.winner_id == current_user.id 
           "Win;" 
+          
         elsif game.winner_id && game.winner_id != current_user.id
           "Loss; " 
-        # elsif game.winner_id.nil?
-        #    link_to "unfinished game", game
+        elsif game.winner_id.nil?
+           # link_to "unfinished game", game
         end
+
     %></b>
   <% end %>
 </p>

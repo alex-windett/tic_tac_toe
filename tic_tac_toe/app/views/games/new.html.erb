@@ -4,7 +4,7 @@
   <%= f.select :user_id, options_for_select([@cuser.name])%>
   
   <%= f.label 'player 2' %>
-  <%= f.select :player2_id, options_for_select(['Guest', 'Computer', @cuser.name])  %>
+  <%= f.select :player2_id, options_for_select(['Guest Player', 'Computer'])  %>
   <br>
   <%= f.submit 'Play Game' %>
 <% end %>

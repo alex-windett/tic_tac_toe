@@ -70,14 +70,17 @@ class GamesController < ApplicationController
 
         winning_line.each do |line|
           case
-          when line & @users_moves == line 
+            when line & @users_moves == line 
             @message = "Player 1 Wins !"
-            @game.winner_id = @game.user_id
+            @game.winner_id = current_user.id
+            # @game.user_id
             @game.save
-          when line & @comps_moves  == line 
+             
+            when line & @comps_moves  == line 
             @message = "Player 2 Wins !"
             @game.winner_id = @game.player2_id
             @game.save
+            
           end
           
         end
