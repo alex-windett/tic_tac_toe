@@ -1,15 +1,11 @@
 class GamesController < ApplicationController
  
+  before_filter :authenticate
+
   def index
     @move = Move.all
     @new_move = Move.new
     @game = Game.all
-
-     # @game = Game.create
-
-  #   if params[:themove]
-  #     @game.moves.create(square_id:params[:themove])
-  #   end
   end
 
 
@@ -21,7 +17,11 @@ class GamesController < ApplicationController
     @users_moves = []
     @comps_moves = []
     @move = Move.all
-    @winning_line = [1, 2, 3]
+    winning_line = [ 
+        [1,2,3], [4,5,6], [7,8,9], 
+        [1,4,7], [2,5,8], [3,6,9], 
+        [1,5,9], [3,5,7] 
+      ]
 
 
     @user.each do |user|
@@ -31,23 +31,37 @@ class GamesController < ApplicationController
     if params[:player_move]
       @moves.create(square_id: params[:player_move], player_id: 1)
 
-        @users_moves = @game.moves.map do |move| move.square_id.to_i
+        @all_moves = @game.moves.map do |move| move.square_id.to_i
         end
 
         availiable_moves = [*1..9]    
 
-            @users_moves.each do |move_id|
-              availiable_moves.delete(move_id)
-            end 
-            @comps_moves.each do |move_id|
-              availiable_moves.delete(move_id)
-            end   
+        @all_moves.each do |move_id|
+          availiable_moves.delete(move_id)
+        end 
 
         comp_move = availiable_moves.sample
-      @game.moves.create(square_id: comp_move)
+        
+        @game.moves.create(square_id: comp_move)
 
-      @comps_moves = @game.moves.map do |move| move.square_id.to_i
-      end
+        @users_moves = @game.moves.where(player_id: 1).map do |move| move.square_id.to_i
+        end
+
+        @comps_moves = @game.moves.where(player_id: nil).map do |move| move.square_id.to_i
+        end
+
+
+        winning_line.each do |line|
+          case
+          when line & @users_moves == line 
+            @message = "user has won"
+          when line & @comps_moves == line 
+            @message = "computer has won"
+          end
+        end
+        
+    
+   
 
     end
 

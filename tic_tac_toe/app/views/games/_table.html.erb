@@ -13,15 +13,5 @@
 <% end %>
 </div>
 
-<% @winning_line.all? do |line| %>
-    <% case %>
-    <% when @users_moves.include?(line) %>
-      User wins
-    <% when @comps_moves.include?(line) %>
-      Comp wins
-    <% else %>
-      nothing
-  <% end %>
-<% end %>
+<h3><%= @message %></h3>
 
-<!-- if one of the numbers matches any of those in users/comps moves it changes, not when all match -->
