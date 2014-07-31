@@ -7,9 +7,9 @@ TicTacToe::Application.routes.draw do
 
   resources :games
 
-  resources :index, only: [:show, :index]
+  resources :index, only: [:index]
 
-  resources :about, only: [:show, :index]
+  resources :about, only: [:index]
 
 
   # The priority is based upon order of creation:
@@ -61,7 +61,7 @@ TicTacToe::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'index#index'
+  root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 

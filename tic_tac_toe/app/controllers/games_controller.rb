@@ -40,7 +40,6 @@ class GamesController < ApplicationController
       else
            @moves.create(square_id: params[:player_move], player_id: 1)
       end
-      # @moves.create(square_id: params[:player_move], player2_id: 1)
      
 
         @all_moves = @game.moves.map do 
@@ -71,7 +70,7 @@ class GamesController < ApplicationController
         winning_line.each do |line|
           case
             when line & @users_moves == line 
-            @message = "Player 1 Wins !"
+            @message = "#{current_user.name} Wins !"
             @game.winner_id = current_user.id
             # @game.user_id
             @game.save

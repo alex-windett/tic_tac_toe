@@ -1,10 +1,16 @@
-<h1>Choose Users</h1>
+<h1>Choose Players </h1>
+<div class = 'new_game'>
 <%= form_for(@game) do |f| %>
    <%= f.label 'player 1' %>
   <%= f.select :user_id, options_for_select([@cuser.name])%>
-  
+</div> 
+<br> 
+<div class = 'new_game'>  
   <%= f.label 'player 2' %>
   <%= f.select :player2_id, options_for_select(['Guest Player', 'Computer'])  %>
+</div>
   <br>
+<div class = 'new_game_button'>
   <%= f.submit 'Play Game' %>
+</div>
 <% end %>

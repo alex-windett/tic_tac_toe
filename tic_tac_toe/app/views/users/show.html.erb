@@ -1,18 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<h2>
+  <!-- <b>Name:</b> -->
   <%= @user.name %>
+</h2>
+
+<div class = 'field'>
+<p>
+  <!-- <b>Picture:</b> -->
+  <%= image_tag @user.picture.url %>
 </p>
 
 <p>
   <b>Dob:</b>
   <%= @user.dob %>
-</p>
-
-<p>
-  <b>Picture:</b>
-  <%#= image_tag @user.picture.url %>
 </p>
 
 <p>
@@ -27,10 +28,10 @@
 
 <p>
   <b>Previous Game:  
-  <% @games.each do |game|%>
+  <% current_user.games.each do |game|%>
     <%= if game.winner_id == current_user.id 
           "Win;" 
-          
+
         elsif game.winner_id && game.winner_id != current_user.id
           "Loss; " 
         elsif game.winner_id.nil?
@@ -41,10 +42,7 @@
   <% end %>
 </p>
 
-<p>
-  <b>Win %:</b>
-  
-</p>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

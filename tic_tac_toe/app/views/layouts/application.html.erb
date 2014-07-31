@@ -11,7 +11,10 @@
 
 <h1><%= link_to 'Tic Tac Toe', users_path %></h1>
 
-<%= render 'layouts/login' %>
+<p><% if current_user %>
+   <p> hello, <%= current_user.name %> </p>
+   <%= link_to 'Logout', session_path(session), method: :delete, data: {confirm: "Are you sure?"} %></p>
+<% end %>
 
 <nav>
  <%= render 'layouts/navbar' %>
@@ -20,9 +23,7 @@
 <%= yield %>
 
 
-<footer>
-  <%= render 'layouts/navbar' %>
-</footer>
+
 
 </body>
 </html>

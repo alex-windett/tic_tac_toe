@@ -1,10 +1,15 @@
 body {
 font-family: 'Patrick Hand SC', cursive;
 color: bkack;
+text-align: center;
+max-width: 600px;
+margin: auto;
+margin-bottom: 70px;
 }
 
 .big_box {
   width: 400px;
+  float: left;
 }
 
 #square a {
@@ -25,6 +30,63 @@ color: bkack;
   font-size: 60px;
 }
 
+.aside {
+  width: 200px;
+  float: right;
+  text-align: left
+}
+
+.users_index {
+  font-size: 20px;
+  text-align: left; 
+}
+
+.users_index td {
+  padding: 10px
+}
+
+
+.nav_bar li {
+  padding-left: 50px;
+  padding-bottom: 10px;
+} 
+
+
+.field {  
+  text-align: left;
+  margin-left: 120px; 
+}
+
+.new_game {
+  text-align: left;
+  padding-bottom: 1 0px;
+}
+
+img {
+  width: 200px;
+  height: auto;
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 70px;
+}
+
+h2 {
+  font-size: 50px;
+  text-align: left; 
+  margin-left: 120px;
+}
+
+h3 {  
+  font-size: 30px;
+}
+
+h4  {
+  font-size: 40px;
+  text-align: center;
+}
+
 li {
   display: inline-block;
 }
@@ -35,6 +97,6 @@ a {
 }
 
 img {
-  width: 500px;
-  height: auto;
+  width: auto;
+  height: 300px;
 }
