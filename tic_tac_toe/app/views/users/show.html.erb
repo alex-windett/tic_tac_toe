@@ -6,9 +6,12 @@
 </h2>
 
 <div class = 'field'>
+
+
 <p>
   <!-- <b>Picture:</b> -->
-  <%= image_tag @user.picture.url %>
+  <%#= image_tag @user.picture.url %>
+  <%= if @user.picture.present? then (image_tag @user.picture.url) else image_tag('no_profile.png')  end %>
 </p>
 
 <p>
