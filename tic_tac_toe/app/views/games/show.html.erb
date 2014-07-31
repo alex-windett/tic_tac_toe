@@ -3,20 +3,17 @@
 <%= render 'table' %>
 
 
-  <b>Past Moves</b>
+  <b>Past Moves
   <% @moves.each do |move| %>
     <%= move.square_id %>
       <% if move.player_id %>
-          X
+          X;
       <% else %>
-          O
+            O;
       <% end %>
-      <br>
-  <% end %>
-
+      <% end %>
+      </b>
   <br>
-
-
 
 
 <p><%= link_to 'New Game', new_game_path %></p>

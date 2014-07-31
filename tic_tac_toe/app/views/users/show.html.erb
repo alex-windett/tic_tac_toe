@@ -26,8 +26,17 @@
 </p>
 
 <p>
-  <b>Previous results:</b>  
-  
+  <b>Previous Game:  
+  <% @games.each do |game|%>
+    <%= if game.winner_id == current_user.id 
+          "Win;" 
+        elsif game.winner_id && game.winner_id != current_user.id
+          "Loss; " 
+        # elsif game.winner_id.nil?
+        #    link_to "unfinished game", game
+        end
+    %></b>
+  <% end %>
 </p>
 
 <p>

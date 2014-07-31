@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @games = Game.all
     @user = User.find(params[:id])
 
     respond_to do |format|

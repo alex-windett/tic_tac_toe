@@ -16,6 +16,7 @@ class GamesController < ApplicationController
     @user = User.all
     @users_moves = []
     @comps_moves = []
+    @player_2 = []
     @move = Move.all
     winning_line = [ 
         [1,2,3], [4,5,6], [7,8,9], 
@@ -27,49 +28,66 @@ class GamesController < ApplicationController
     @user.each do |user|
       @user_name = user.name
     end
-  
+    
     if params[:player_move]
-      @moves.create(square_id: params[:player_move], player_id: 1)
 
-        @all_moves = @game.moves.map do |move| move.square_id.to_i
+      if @moves.last
+          if @moves.last.player_id
+            @moves.create(square_id: params[:player_move])
+          else 
+            @moves.create(square_id: params[:player_move], player_id: 1)
+          end
+      else
+           @moves.create(square_id: params[:player_move], player_id: 1)
+      end
+      # @moves.create(square_id: params[:player_move], player2_id: 1)
+     
+
+        @all_moves = @game.moves.map do 
+          |move| move.square_id.to_i
         end
 
         availiable_moves = [*1..9]    
 
-        @all_moves.each do |move_id|
-          availiable_moves.delete(move_id)
+        @all_moves.each do |move|
+          availiable_moves.delete(move)
         end 
 
-        comp_move = availiable_moves.sample
+        if @game.player2_id == "Computer" 
+          comp_move = availiable_moves.sample
         
-        @game.moves.create(square_id: comp_move)
+          @game.moves.create(square_id: comp_move)
+        end
 
         @users_moves = @game.moves.where(player_id: 1).map do |move| move.square_id.to_i
         end
 
+        # @player_2 = @game.moves.where(player2_id: 1).map do |move| move.square_id.to_i
+        # end
+
         @comps_moves = @game.moves.where(player_id: nil).map do |move| move.square_id.to_i
         end
-
 
         winning_line.each do |line|
           case
           when line & @users_moves == line 
-            @message = "user has won"
-          when line & @comps_moves == line 
-            @message = "computer has won"
+            @message = "Player 1 Wins !"
+            @game.winner_id = @game.user_id
+            @game.save
+          when line & @comps_moves  == line 
+            @message = "Player 2 Wins !"
+            @game.winner_id = @game.player2_id
+            @game.save
           end
+          
         end
-        
-    
-   
-
+      end
     end
-
-  end
 
 def new 
  @game = Game.new
  @user = User.all
+ @cuser = @current_user
 end
 
 def create
