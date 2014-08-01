@@ -9,8 +9,6 @@
 
 
 <p>
-  <!-- <b>Picture:</b> -->
-  <%#= image_tag @user.picture.url %>
   <%= if @user.picture.present? then (image_tag @user.picture.url) else image_tag('no_profile.png')  end %>
 </p>
 
@@ -20,32 +18,28 @@
 </p>
 
 <p>
-  <b>Role:</b>
-  <%= @user.role %>
-</p>
-
-<p>
   <b>Email:</b>
   <%= @user.email %>
 </p>
 
-<p>
+<!-- <p>
   <b>Previous Game:  
-  <% current_user.games.each do |game|%>
-    <%= if game.winner_id == current_user.id 
+  <%# current_user.games.each do |game|%>
+    <%#= if game.winner_id == current_user.id 
           "Win;" 
 
-        elsif game.winner_id && game.winner_id != current_user.id
+        elsif game.winner_id  != current_user.id
           "Loss; " 
         elsif game.winner_id.nil?
-           # link_to "unfinished game", game
+            link_to "unfinished game", game
         end
 
     %></b>
-  <% end %>
-</p>
+  <%# end %>
+</p> -->
 
 </div>
 
+<%#= link_to 'Delete', @user, method: :delete, data: { confirm: "Are you sure you want to delete your account" } %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %> |

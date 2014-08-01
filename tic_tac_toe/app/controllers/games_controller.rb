@@ -72,7 +72,7 @@ class GamesController < ApplicationController
             when line & @users_moves == line 
             @message = "#{current_user.name} Wins !"
             @game.winner_id = current_user.id
-            # @game.user_id
+          
             @game.save
              
             when line & @comps_moves  == line 
