@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   
+  # Authentication with bicrypt-ruby, only registered users can  # access certain areas of the website
+
   helper_method :current_user
 
   def current_user
