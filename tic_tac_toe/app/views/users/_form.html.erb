@@ -16,7 +16,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div id="datepicker">
+  <div class="field">
     <%= f.label :dob %><br />
     <%= f.text_field :dob %>
   </div>
@@ -24,21 +24,20 @@
     <%= f.label :picture %><br />
     <%= f.file_field :picture %>
   </div>
-  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirmation %><br/ >
-      <%= f.password_field :password_confirmation %>
-    </div>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br/ >
+    <%= f.password_field :password_confirmation %>
+  </div>
     <br>
       
     <%= f.submit %>
-  </div>
+</div>
 <% end %>
